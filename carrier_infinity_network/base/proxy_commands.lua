@@ -78,6 +78,7 @@ function PRX_CMD.SET_COOL_SETPOINT(bindingID, tParams)
 
     cmd = string.format("S%dZ%dCLSP!%s", system, zone, tParams["SETPOINT"])
 
+    LogInfo(gSetpointHoldMode)
     if (gSetpointHoldMode ~= "Permanent") then 
         cmd = cmd .. ",".. gSetpointHoldMode
     end 
@@ -132,10 +133,10 @@ end
 function PRX_CMD.SET_OCCUPIED_MODE(bindingId, tParams)
 	local system = tParams["SYSTEM"]
 	local zone = tParams["ZONE"]
-    if (tParams['OCCUPIED_MODE'] == 'false' or tParams['OCCUPIED_MODE'] == 'False') then 
+    if (tParams['OCCUPIED_MODE'] == 'UNOCCUPIED') then 
+		QueuePriority1Command(string.format("S%dZ%dHOLD!OFF", system, zone))
     	QueuePriority1Command(string.format("S%dZ%dUNOCC!ON", system, zone))
     else 
-    	QueuePriority1Command(string.format("S%dZ%dUNOCC!OFF", system, zone))
     	QueuePriority1Command(string.format("S%dZ%dHOLD!OFF", system, zone))
     end
 end

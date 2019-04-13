@@ -17,15 +17,18 @@ end
 function EX_CMD.COOL_SETPOINT_CHANGED(tParams)
 	gTStatProxy:dev_CoolSetpoint(tParams["SETPOINT"], gScale)
 end
-
+-- These get called from the external device specific command. 
 function EX_CMD.SET_UNOCCUPIED_MODE(tParams)
     LogInfo("Setting SET_UNOCCUPIED_MODE")
-    SendToCarrier('SET_OCCUPIED_MODE', { OCCUPIED_MODE = false});
+    SendToCarrier('SET_OCCUPIED_MODE', { OCCUPIED_MODE = 'UNOCCUPIED'});
+    gTStatProxy:dev_ExtrasState("<extras_state><extra><object id=\"Occupied\" value=\"false\"></object></extra></extras_state>")
 end
 
+-- These get called from the external device specific command. 
 function EX_CMD.SET_OCCUPIED_MODE(tParams)
     LogInfo("Setting SET_OCCUPIED_MODE")
-    SendToCarrier('SET_OCCUPIED_MODE', { OCCUPIED_MODE = true });
+    SendToCarrier('SET_OCCUPIED_MODE', { OCCUPIED_MODE = 'OCCUPIED'});
+    gTStatProxy:dev_ExtrasState("<extras_state><extra><object id=\"Occupied\" value=\"true\"></object></extra></extras_state>")
 end
 
 function EX_CMD.FANMODE_CHANGED(tParams)

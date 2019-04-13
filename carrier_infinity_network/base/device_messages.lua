@@ -264,7 +264,7 @@ end
 function DEV_MSG.OTMR(value, system, zone)
     if (value ~= "00:00") then 
         hour, min = string.match(value,"(%d+):(%d+)");
-        SendToDevice(system, zone, "MESSAGE_CHANGED", { MESSAGE = string.format("Holding for %d hours and %d minutes", hour, min) })
+        SendToDevice(system, zone, "MESSAGE_CHANGED", { MESSAGE = string.format("Holding temperature for %d hours and %d minutes", hour, min) })
     end
 end
 

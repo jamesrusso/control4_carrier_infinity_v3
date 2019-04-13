@@ -5,8 +5,8 @@
 	<name>Carrier Infinity Network V3</name>
 	<model>Infinity Network</model>
 	<created>3/24/2015 10:07 AM</created>
-	<modified>04/12/2019 07:32 PM</modified>
-	<version>58</version>
+	<modified>04/13/2019 07:34 AM</modified>
+	<version>60</version>
 	<combo>true</combo>
 	<small>devices_sm/HVAC_16.gif</small>
 	<large>devices_lg/HVAC_32.gif</large>
@@ -107,18 +107,6 @@
                     <item>04:00</item>
                     <item>05:00</item>
                 </items>
-			</property>
-			<property>
-				<name>Log Mode</name>
-				<type>LIST</type>
-				<readonly>false</readonly>
-				<default>Off</default>
-				<items>
-					<item>Off</item>
-					<item>Print</item>
-					<item>Log</item>
-					<item>Print and Log</item>
-				</items>
 			</property>
 		</properties>
 		<commands>

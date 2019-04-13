@@ -20,9 +20,7 @@ IR_BINDING_ID = -1
 SERIAL_BINDING_ID = 1
 NETWORK_BINDING_ID = 6000
 
--- Only get the PRIORITY_2 items ever 5 ticks of the timer.
 PRIORITY_2_COUNT = 5
--- Only get the PRIORITY_3 items ever 10 ticks of the timer.
 PRIORITY_3_COUNT = 10
 
 PRIORITY_1 = 1
@@ -236,7 +234,7 @@ function GetAllSystemSettings(priority)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetP2SystemSettings({SYSTEM = S}); return "found"; end end)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 2) then GetP2SystemSettings({SYSTEM = S}); return "found"; end end)
 	else	-- Get all system settings
-		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetSystemSettings({SYSTEM = S}); return "found"; end end)
+		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetP3SystemSettings({SYSTEM = S}); return "found"; end end)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 2) then GetSystemSettings({SYSTEM = S}); return "found"; end end)
 	end
 
@@ -255,13 +253,14 @@ function GetP2SystemSettings(tParams)
 
 	-- Get Priority 1 settings
 	GetP1SystemSettings(tParams)
+
 	-- Get Outside Temperature
 	cmd = string.format("S%dOAT?", tParams["SYSTEM"])
 	QueuePriority2Command(cmd)
 end
 
 function GetSystemSettings(tParams)
-	LogTrace("GetSystemSettings(): system = %s", tostring(tParams["SYSTEM"]))
+	LogTrace("GetP3SystemSettings(): system = %s", tostring(tParams["SYSTEM"]))
 
 	-- Get Priority 2 settings, which also gets P1 settings.
 	GetP2SystemSettings(tParams)
@@ -318,22 +317,20 @@ function GetDeviceSettings(system, zone)
 end
 
 function OnPollingTimerExpired()
+	-- If the P2 queue is empty, then we will add some more commands
 	if (gCon._Priority2CommandQueue:empty()) then
+		-- If the count is 
 		if (gPollCnt == PRIORITY_2_COUNT) then
 			GetAllSystemSettings(PRIORITY_2)
 			gPollCnt = gPollCnt + 1
 		elseif (gPollCnt == PRIORITY_3_COUNT) then
-			if (gCon._Priority2CommandQueue:empty()) then
-				GetAllSystemSettings(PRIORITY_3)
-			else
-				GetAllSystemSettings(PRIORITY_2)
-			end
-	
+			GetAllSystemSettings(PRIORITY_3)
 			gPollCnt = 1
 		else
 			GetAllSystemSettings(PRIORITY_1)
 			gPollCnt = gPollCnt + 1
 		end
+
 	else
 		LogInfo("Priority 2 command queue is not empty. Waiting to queue more commands...")
 	end

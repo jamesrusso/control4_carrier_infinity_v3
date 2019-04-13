@@ -170,6 +170,7 @@ function SET_MODE_HOLD(mode)
 	
 	local tParams = {HOLDMODE = mode}
 	SendToCarrier("SET_HOLD_MODE", tParams)
+	gTStatProxy:dev_Message(" ")
 	--gTStatProxy:dev_HoldMode(mode)
 end
 
@@ -208,7 +209,11 @@ function PRX_CMD.REFRESH_DATA()
 	SendToCarrier("REFRESH_DATA", {})
 end
 
+-- These get called from the extras page via the proxy
 function PRX_CMD.SET_OCCUPIED(idBinding, tParams)
-    LogInfo("Requesting updated information %s", tParams["value"])
-	SendToCarrier("SET_OCCUPIED_MODE", { OCCUPIED_MODE = tParams["value"] })
+    if (tParams["value"] == 'true') then 
+        EX_CMD.SET_OCCUPIED_MODE({});
+    else 
+        EX_CMD.SET_UNOCCUPIED_MODE({});
+    end
 end

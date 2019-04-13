@@ -29,28 +29,9 @@ function ON_DRIVER_EARLY_INIT.main()
 	---- global vars ----
 	gDeviceList = {}
 	gSysAutoMode = false
+	gSetpointHoldMode = "Permanent"
 	gCanHeatCool = true
 	gPollCnt = 1
-
-	DAY_INDEX = {
-		["SUN"]  = 0,
-		["MON"]  = 1,
-		["TUES"] = 2,
-		["WED"]  = 3,
-		["THUR"] = 4,
-		["FRI"]  = 5,
-		["SAT"]  = 6
-	}
-	DAY_INDEX_REV = ReverseTable(DAY_INDEX)
-
-	ENTRY_INDEX = {
-		["WAKE"]  = 0,
-		["DAY"]  = 1,
-		["EVE"] = 2,
-		["SLP"]  = 3
-	}
-	ENTRY_INDEX_REV = ReverseTable(ENTRY_INDEX)
-
 end
 
 function ON_DRIVER_INIT.main()
