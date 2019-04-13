@@ -1,0 +1,200 @@
+<devicedata>
+  <copyright>Copyright 2015 Control4 Corporation.  All rights reserved.</copyright>
+  <creator>Control4</creator>
+  <manufacturer>Carrier</manufacturer>
+  <name>Carrier Infinity Thermostat V3</name>
+  <model>Infinity Thermostat</model>
+  <created>3/24/2015 10:07 AM</created>
+  <modified>04/12/2019 07:43 PM</modified>
+  <version>67</version>
+  <small>devices_sm\HVAC_16.gif</small>
+  <large>devices_lg\HVAC_32.gif</large>
+  <control>lua_gen</control>
+  <driver>DriverWorks</driver>
+  <proxies qty="1">
+    <proxy name="Carrier Infinity Thermostat" primary="True" proxybindingid="5001">thermostatV2</proxy>
+  </proxies>
+  <capabilities>
+    <can_heat>true</can_heat>
+    <can_cool>true</can_cool>
+    <has_single_setpoint>false</has_single_setpoint>
+    <can_do_auto>true</can_do_auto>
+    <can_calibrate>false</can_calibrate>
+    <can_lock_buttons>false</can_lock_buttons>
+    <can_change_scale>true</can_change_scale>
+    <setpoint_heat_min_f>38</setpoint_heat_min_f>
+    <setpoint_heat_min_c>4</setpoint_heat_min_c>
+    <setpoint_heat_max_f>88</setpoint_heat_max_f>
+    <setpoint_heat_max_c>31</setpoint_heat_max_c>
+    <setpoint_heat_resolution_f>1</setpoint_heat_resolution_f>
+    <setpoint_heat_resolution_c>1</setpoint_heat_resolution_c>
+    <setpoint_cool_min_f>40</setpoint_cool_min_f>
+    <setpoint_cool_min_c>5</setpoint_cool_min_c>
+    <setpoint_cool_max_f>90</setpoint_cool_max_f>
+    <setpoint_cool_max_c>32</setpoint_cool_max_c>
+    <setpoint_cool_resolution_f>1</setpoint_cool_resolution_f>
+    <setpoint_cool_resolution_c>1</setpoint_cool_resolution_c>
+    <hvac_modes>OFF,HEAT,COOL,AUTO,EHEAT</hvac_modes>
+    <fan_modes>AUTO,LOW,MEDIUM,HIGH</fan_modes>
+    <hold_modes>Off,Temporary,Permanent</hold_modes>
+    <hvac_states>OFF,COOL,HEAT</hvac_states>
+    <fan_states />
+    <has_vacation_mode>false</has_vacation_mode>
+    <has_remote_sensor>false</has_remote_sensor>
+    <has_outdoor_temperature>true</has_outdoor_temperature>
+    <has_connection_status>true</has_connection_status>
+    <can_inc_dec_setpoints>false</can_inc_dec_setpoints>
+    <current_temperature_resolution_f>1</current_temperature_resolution_f>
+    <current_temperature_resolution_c>1</current_temperature_resolution_c>
+    <outdoor_temperature_resolution_f>1</outdoor_temperature_resolution_f>
+    <outdoor_temperature_resolution_c>1</outdoor_temperature_resolution_c>
+    <can_humidify>false</can_humidify>
+    <has_humidity>true</has_humidity>
+    <humidity_modes />
+    <humidity_states />
+    <setpoint_humidify_min>0</setpoint_humidify_min>
+    <setpoint_humidify_max>100</setpoint_humidify_max>
+    <setpoint_humidify_resolution>1</setpoint_humidify_resolution>
+    <can_dehumidify>false</can_dehumidify>
+    <setpoint_dehumidify_min>0</setpoint_dehumidify_min>
+    <setpoint_dehumidify_max>100</setpoint_dehumidify_max>
+    <setpoint_dehumidify_resolution>1</setpoint_dehumidify_resolution>
+    <has_extras>true</has_extras>
+    <scheduling>false</scheduling>
+    <schedule_default>
+      <schedule_day_info DefaultCool="278" DefaultHeat="200" Entries="6">
+        <schedule_entry Enabled="True" Name="Wake" Time="360" />
+        <schedule_entry Enabled="True" Name="Leave" Time="480" />
+        <schedule_entry Enabled="True" Name="Return" Time="1080" />
+        <schedule_entry Enabled="True" Name="Sleep" Time="1320" />
+        <schedule_entry Enabled="False" Name="Custom 1" Time="1380" />
+        <schedule_entry Enabled="False" Name="Custom 2" Time="1380" />
+      </schedule_day_info>
+    </schedule_default>
+    <can_preset>false</can_preset>
+    <can_preset_schedule>false</can_preset_schedule>
+  </capabilities>
+  <connections>
+    <connection>
+      <id>1</id>
+      <facing>6</facing>
+      <connectionname>Carrier Infinity Control V3</connectionname>
+      <type>1</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>CARRIER_INFINITY_NETWORK_V3</classname>
+          <autobind>False</autobind>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>Thermostat</connectionname>
+      <type>2</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <hidden>True</hidden>
+      <classes>
+        <class>
+          <classname>THERMOSTAT</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7000</id>
+      <facing>6</facing>
+      <connectionname>Room Selection</connectionname>
+      <type>7</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <classes>
+        <class>
+          <autobind>True</autobind>
+          <classname>TEMPERATURE</classname>
+        </class>
+        <class>
+          <autobind>True</autobind>
+          <classname>TEMPERATURE_CONTROL</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <config>
+    <documentation file="documentation.rtf" />
+    <script file="driver.lua" />
+    <actions>
+      <action>
+        <name>Template Version</name>
+        <command>TemplateVersion</command>
+      </action>
+    </actions>
+    <properties>
+    <property>
+      <name>System</name>
+      <type>RANGED_INTEGER</type>
+      <minimum>1</minimum>
+      <maximum>2</maximum>
+      <default>1</default>
+      <readonly>false</readonly>
+      <tooltip>System ID thermostat is connected to.</tooltip>
+    </property>
+    <property>
+      <name>Zone</name>
+      <type>RANGED_INTEGER</type>
+      <minimum>1</minimum>
+      <maximum>8</maximum>
+      <default>1</default>
+      <readonly>false</readonly>
+      <tooltip>Zone number of the thermostat.</tooltip>
+    </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Fatal</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Debug</item>
+          <item>5 - Trace</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+    </properties>
+    <commands>
+            <command>
+                <name>SET_UNOCCUPIED_MODE</name>
+                <description>Set NAME to unoccupied mode</description>
+            </command>
+            <command>
+                <name>SET_OCCUPIED_MODE</name>
+                <description>Set NAME to occupied mode</description>
+            </command>
+    </commands>
+  </config>
+  <composer_categories>
+    <category>Comfort</category>
+  </composer_categories>
+</devicedata>

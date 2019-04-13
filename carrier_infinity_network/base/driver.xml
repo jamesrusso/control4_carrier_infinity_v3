@@ -1,0 +1,134 @@
+<devicedata>
+	<copyright>Copyright 2015 Control4 Corporation.  All rights reserved.</copyright>
+	<creator>Control4</creator>
+	<manufacturer>Carrier</manufacturer>
+	<name>Carrier Infinity Network V3</name>
+	<model>Infinity Network</model>
+	<created>3/24/2015 10:07 AM</created>
+	<modified>04/12/2019 07:32 PM</modified>
+	<version>58</version>
+	<combo>true</combo>
+	<small>devices_sm/HVAC_16.gif</small>
+	<large>devices_lg/HVAC_32.gif</large>
+	<control>lua_gen</control>
+	<controlmethod>serial</controlmethod>
+	<driver>DriverWorks</driver>
+	<proxy>carrier_infinity_c4z</proxy>
+	<capabilities>
+		<serialsettings>9600 8 none 1 none</serialsettings>
+		<can_poll_serial>False</can_poll_serial>
+	</capabilities>
+	<connections>
+		<connection>
+			<id>1</id>
+			<facing>6</facing>
+			<connectionname>Serial 232</connectionname>
+			<type>1</type>
+			<consumer>True</consumer>
+			<audiosource>False</audiosource>
+			<videosource>False</videosource>
+			<linelevel>True</linelevel>
+			<classes>
+				<class>
+					<classname>RS_232</classname>
+				</class>
+			</classes>
+		</connection>
+		<connection>
+			<id>2</id>
+			<facing>6</facing>
+			<connectionname>Carrier Network V3</connectionname>
+			<type>1</type>
+			<consumer>False</consumer>
+			<audiosource>False</audiosource>
+			<videosource>False</videosource>
+			<linelevel>True</linelevel>
+			<classes>
+				<class>
+					<classname>CARRIER_INFINITY_NETWORK_V3</classname>
+				</class>
+			</classes>
+		</connection>
+	</connections>
+	<config>
+		<documentation file="documentation.rtf" />
+		<script file="driver.lua" />
+		<actions>
+			<action>
+				<name>Display Carrier Devices</name>
+				<command>DisplayCarrierDevices</command>
+			</action>
+			<action>
+				<name>Get Current Settings</name>
+				<command>GetCurrentSettings</command>
+			</action>
+			<action>
+				<name>Template Version</name>
+				<command>TemplateVersion</command>
+			</action>
+		</actions>
+		<properties>
+			<property>
+				<name>Polling Timer</name>
+				<type>LIST</type>
+				<items>
+					<item>Every Minute</item>
+					<item>Every 5 Minutes</item>
+					<item>Every 15 Minutes</item>
+					<item>Every 30 Minutes</item>
+				</items>
+				<default>Every Minute</default>
+				<readonly>false</readonly>
+			</property>
+			<property>
+				<name>Log Level</name>
+				<type>LIST</type>
+				<readonly>false</readonly>
+				<default>2 - Warning</default>
+				<items>
+					<item>0 - Fatal</item>
+					<item>1 - Error</item>
+					<item>2 - Warning</item>
+					<item>3 - Info</item>
+					<item>4 - Debug</item>
+					<item>5 - Trace</item>
+				</items>
+			</property>
+			<property>
+                 <name>Setpoint Hold Mode</name>
+                 <type>LIST</type>
+                 <readonly>false</readonly>
+                 <default>Permanent</default>
+                 <items>
+                    <item>Permanent</item>
+                    <item>01:00</item>
+                    <item>02:00</item>
+                    <item>03:00</item>
+                    <item>04:00</item>
+                    <item>05:00</item>
+                </items>
+			</property>
+			<property>
+				<name>Log Mode</name>
+				<type>LIST</type>
+				<readonly>false</readonly>
+				<default>Off</default>
+				<items>
+					<item>Off</item>
+					<item>Print</item>
+					<item>Log</item>
+					<item>Print and Log</item>
+				</items>
+			</property>
+		</properties>
+		<commands>
+			<command>
+				<name>Get System Status</name>
+				<description>Get NAME Status</description>
+			</command>
+		</commands>
+	</config>
+	<composer_categories>
+		<category>Comfort</category>
+	</composer_categories>
+</devicedata>
