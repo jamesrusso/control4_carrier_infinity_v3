@@ -94,6 +94,18 @@
 					<item>5 - Trace</item>
 				</items>
 			</property>
+			 <property>
+		        <name>Log Mode</name>
+		        <type>LIST</type>
+		        <readonly>false</readonly>
+		        <default>Off</default>
+		        <items>
+		          <item>Off</item>
+		          <item>Print</item>
+		          <item>Log</item>
+		          <item>Print and Log</item>
+		        </items>
+	      </property>
 			<property>
                  <name>Setpoint Hold Mode</name>
                  <type>LIST</type>
