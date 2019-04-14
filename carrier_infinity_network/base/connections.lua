@@ -259,7 +259,7 @@ function GetP2SystemSettings(tParams)
 	QueuePriority2Command(cmd)
 end
 
-function GetSystemSettings(tParams)
+function GetP3SystemSettings(tParams)
 	LogTrace("GetP3SystemSettings(): system = %s", tostring(tParams["SYSTEM"]))
 
 	-- Get Priority 2 settings, which also gets P1 settings.

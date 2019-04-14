@@ -5,8 +5,8 @@
 	<name>Carrier Infinity Network V3</name>
 	<model>Infinity Network</model>
 	<created>3/24/2015 10:07 AM</created>
-	<modified>04/13/2019 07:34 AM</modified>
-	<version>60</version>
+	<modified>04/14/2019 07:19 AM</modified>
+	<version>63</version>
 	<combo>true</combo>
 	<small>devices_sm/HVAC_16.gif</small>
 	<large>devices_lg/HVAC_32.gif</large>
