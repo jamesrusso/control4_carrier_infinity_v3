@@ -234,7 +234,7 @@ function GetAllSystemSettings(priority)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetP2SystemSettings({SYSTEM = S}); return "found"; end end)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 2) then GetP2SystemSettings({SYSTEM = S}); return "found"; end end)
 	else	-- Get all system settings
-		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetP3SystemSettings({SYSTEM = S}); return "found"; end end)
+		ForEachDevice(function(_, S, _) if (tonumber(S) == 1) then GetSystemSettings({SYSTEM = S}); return "found"; end end)
 		ForEachDevice(function(_, S, _) if (tonumber(S) == 2) then GetSystemSettings({SYSTEM = S}); return "found"; end end)
 	end
 
@@ -259,8 +259,8 @@ function GetP2SystemSettings(tParams)
 	QueuePriority2Command(cmd)
 end
 
-function GetP3SystemSettings(tParams)
-	LogTrace("GetP3SystemSettings(): system = %s", tostring(tParams["SYSTEM"]))
+function GetSystemSettings(tParams)
+	LogTrace("GetSystemSettings(): system = %s", tostring(tParams["SYSTEM"]))
 
 	-- Get Priority 2 settings, which also gets P1 settings.
 	GetP2SystemSettings(tParams)

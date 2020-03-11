@@ -5,8 +5,8 @@
   <name>Carrier Infinity Thermostat V3</name>
   <model>Infinity Thermostat</model>
   <created>3/24/2015 10:07 AM</created>
-  <modified>04/14/2019 07:29 AM</modified>
-  <version>72</version>
+  <modified>08/12/2019 06:40 PM</modified>
+  <version>76</version>
   <small>devices_sm\HVAC_16.gif</small>
   <large>devices_lg\HVAC_32.gif</large>
   <control>lua_gen</control>
